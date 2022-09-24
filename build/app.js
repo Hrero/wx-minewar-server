@@ -6,9 +6,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 var http = require('http');
 const app = (0, express_1.default)();
-app.get("/", (req, res, next) => {
-    res.send("Hello World!");
-});
+// app.get("/", (req: Request, res: Response, next: NextFunction) => {
+//   res.send("Hello World!");
+// });
 var server = http.createServer(app);
 const io = require('socket.io')(server);
 io.on('connection', (socket) => {
