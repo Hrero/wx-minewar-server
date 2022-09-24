@@ -16,3 +16,9 @@
 const app = require('http').createServer(); // 本地开发服务器
 const io = require('socket.io')(app);
 app.listen(7071);
+console.log(7071);
+// 有新玩家连接服务器
+io.on('connection', function (socket) {
+    console.log(111);
+    console.log(socket);
+});
