@@ -1,7 +1,7 @@
 {
     "apps": [{
         "name": "wx-minewar-server",
-        "script": "app/app.ts",
+        "script": "build/app.js",
         "node_args": "--harmony"
     }],
     "deploy": {
