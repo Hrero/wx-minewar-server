@@ -16,4 +16,3 @@ io.on('connection', (socket: any) => {
 app.listen(7071, function () {
   console.log("Example app listening on port 7071!");
 });
-
