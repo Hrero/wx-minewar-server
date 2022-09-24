@@ -13,12 +13,13 @@
 // server.listen(7071, function () {
 //   console.log("Example app listening on port 7071!");
 // });
-const app = require('http').createServer(); // 本地开发服务器
+const app = require('http').createServer();
+// 创建 socket.io 服务
 const io = require('socket.io')(app);
+// 监听 https 端口
 app.listen(7071);
-console.log(7071);
-// 有新玩家连接服务器
+// 有客户端连接服务器
 io.on('connection', function (socket) {
-    console.log(111);
-    console.log(socket);
+    console.log('有一个客户端连接了服务器：', socket);
+    // socket 代表该客户端的 socket.io 连接
 });
