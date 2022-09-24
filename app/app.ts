@@ -1,18 +1,21 @@
 import express, { Application, Request, Response, NextFunction } from "express";
 
+var http = require('http');
+
 const app: Application = express();
 
 app.get("/", (req: Request, res: Response, next: NextFunction) => {
   res.send("Hello World!");
 });
 
-const io = require('socket.io')(app)
+var server = http.createServer(app);
 
-// 有客户端连接服务器
+const io = require('socket.io')(server)
+
 io.on('connection', (socket: any) => {
   console.log('有一个客户端连接了服务器：', socket)
 })
 
-app.listen(7071, function () {
+server.listen(7071, function () {
   console.log("Example app listening on port 7071!");
 });
