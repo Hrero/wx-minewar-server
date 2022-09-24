@@ -19,8 +19,30 @@
 // server.listen(7071, function () {
 //   console.log("Example app listening on port 7071!");
 // });
+function serveIndex (req: any, res: any) {
+  res.write(`
+    <html>
+    <head>
+    <title>微信小游戏</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    </head>
+    <body>
+    <header>
+    <h1>《微信小游戏开发》</h1>
+    </header>
+    <ul>
+      <li><a href="https://www.haozengrun.com">主页跳转</a></li>
+      <li>游戏专用域名</li>
+    </ul>
 
-const app = require('http').createServer()
+    <footer>ELEVEN</footer>
+    </body>
+    </html>
+  `)
+  res.end()
+}
+
+const app = require('http').createServer(serveIndex)
 
 // 创建 socket.io 服务
 const io = require('socket.io')(app)
