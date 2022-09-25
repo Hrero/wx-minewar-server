@@ -19,7 +19,7 @@
 // server.listen(7071, function () {
 //   console.log("Example app listening on port 7071!");
 // });
-function serveIndex (req: any, res: any) {
+const app = require('http').createServer(function serveIndex (req: any, res: any) {
   res.write(`
     <html>
     <head>
@@ -40,15 +40,17 @@ function serveIndex (req: any, res: any) {
     </html>
   `)
   res.end()
-}
-
-const app = require('http').createServer(serveIndex)
+})
 
 // 创建 socket.io 服务
-const io = require('socket.io')(app)
+const io = require('socket.io')(app, {
+  cors: {
+    origin: "http://localhost:7071",
+  },
+})
 
 // 监听 https 端口
-app.listen(7071)
+// app.listen(7071)
 
 // 有客户端连接服务器
 io.on('connection', function (socket: any) {
