@@ -16,8 +16,27 @@ const sessionMiddleware = (0, express_session_1.default)({
     saveUninitialized: true,
 });
 app.use(sessionMiddleware);
-app.get("/", (req, res) => {
-    res.sendFile("./index.html", { root: process.cwd() });
+app.get("/", function serveIndex(req, res) {
+    res.write(`
+      <html>
+      <head>
+      <title>微信小游戏</title>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+      </head>
+      <body>
+      <header>
+      <h1>《微信小游戏开发》</h1>
+      </header>
+      <ul>
+        <li><a href="https://www.haozengrun.com">主页跳转</a></li>
+        <li>游戏专用域名</li>
+      </ul>
+  
+      <footer>ELEVEN</footer>
+      </body>
+      </html>
+    `);
+    res.end();
 });
 app.post("/incr", (req, res) => {
     const session = req.session;
